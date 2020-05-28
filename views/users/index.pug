@@ -5,4 +5,4 @@ form(action="/users/search", method= "GET")
 	button search
 each user in users
 	li= user.name
-	a(href="/users/view" + user.id) xem chi tiet
+	a(href="/users/view/" + user.id) xem chi tiet

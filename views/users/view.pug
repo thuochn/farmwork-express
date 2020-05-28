@@ -1,9 +1,15 @@
 h1 User
-each user in users
-	li
-		span= "name:" + user.name
-		br
-		span= "phonel:" + user.phonel
-		br
-		span="date:" + user.date + "ngay"
 a(href="/users") users
+form(action= "/users/view/" + user.id + "/update", method= "POST")
+	input(type= "text", placeholder= "EditName", name="name")
+	input(type= "text", placeholder= "EditPhonel", name="phonel")
+	input(type= "text", placeholder= "EditDate", name="date")
+	button update
+form(action= "/users/view/" + user.id + "/delete")
+	button DELETE USER
+li
+	span= "name:" + user.name
+	br
+	span= "phonel:" + user.phonel
+	br
+	span="date:" + user.date + "ngay"

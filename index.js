@@ -25,11 +25,11 @@ app.get("/", function(req, res) {
 	});
 });
 
-app.get("/book/create", function(req, res) {
+app.get("/books/create", function(req, res) {
 	res.render("create")
 });
 
-app.post("/create", function(req, res) {
+app.post("/books/create", function(req, res) {
 	req.body.id = shortid.generate();
 	db.get('products')
 	.push(req.body)
@@ -37,7 +37,7 @@ app.post("/create", function(req, res) {
 	res.redirect('/')
 });
 
-app.get("/search", function(req, res) {
+app.get("/books/search", function(req, res) {
 	let q = req.query.q;
  	let matchedBook = db.get("products").value().filter(function(product) {
  		return product.title.toLowerCase().indexOf(q.toLowerCase()) !== -1;
@@ -47,15 +47,16 @@ app.get("/search", function(req, res) {
 	});
 });
 
-app.get("/view/:id", function(req, res) {
+app.get("/books/view/:id", function(req, res) {
 	let id = req.params.id;
+	console.log(id);
  	let product = db.get('products').find({ id: id }).value();
  	res.render('view', {
  		product: product
  	});
 });
 
-app.get("/view/:id/delete",function(req, res) {
+app.get("/books/view/:id/delete",function(req, res) {
 	let id = req.params.id;
 	db.get('products')
 	.remove({ id: id })
@@ -63,7 +64,7 @@ app.get("/view/:id/delete",function(req, res) {
 	res.redirect("/");
 });
 
-app.post("/view/:id/update", function(req, res) {
+app.post("/books/view/:id/update", function(req, res) {
 	let id = req.params.id;
 	let title = req.body.title;
 	db.get('products')
@@ -101,12 +102,32 @@ app.get("/users/search", function(req, res) {
 	});
 });
 
-app.get("/users/view:id", function(req, res) {
-	let id = req.params.id
-	res.render('users/view',{
-		users: db.get("users").value()
-	})
+app.get("/users/view/:id", function(req, res) {
+	let id = req.params.id;
+ 	let user = db.get("users").find({ id: id }).value();
+ 	res.render('users/view', {
+ 		user: user
+ 	});
 });
+
+app.post("/users/view/:id/update", function(req, res) {
+	let id = req.params.id;
+	db.get('users')
+	.find({ id: id })
+	.assign({ name: req.body.name })
+	.assign({ phonel: req.body.phonel })
+	.assign({ date: req.body.date })
+	.write()
+	res.redirect("/users")
+ });
+
+app.get("/users/view/:id/delete", function(req, res) {
+	let id = req.params.id;
+	db.get('users')
+	  .remove({ id: id })
+	  .write()
+	 res.redirect("/users")
+})
 
 app.listen(port, function(req, res) {
 	console.log("localhost:" + port)

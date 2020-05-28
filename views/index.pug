@@ -1,11 +1,11 @@
 h1 Books
 h4
-	a(href="book/create") CreateBook
+	a(href="books/create") CreateBook
 	br
 	a(href="/users") UserBooks
-form(action= "/search", method= "GET")
+form(action= "/books/search", method= "GET")
 	input(type= "text", placeholder= "Search Books", name= "q")
 	button search
 each product in products
 	li= product.title
-	a(href="/view/" + product.id) xem chi tiet
+	a(href="/books/view/" + product.id) xem chi tiet

@@ -1,7 +1,8 @@
 h1 Thong tin Sach
-form(action= "/view/" + product.id + "/delete", method= "GET")
-	button delete
-form(action= "/view/" + product.id + "/update", method= "POST")
+a(href="/") Books
+form(action= "/books/view/" + product.id + "/delete", method= "GET")
+	button DeleteBook
+form(action= "/books/view/" + product.id + "/update", method= "POST")
 	input(type= "text", placeholder= "update title", name="title")
 	button update	
 li
