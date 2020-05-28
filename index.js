@@ -34,6 +34,42 @@ app.post("/create", function(req, res) {
 	db.get('products').push(req.body).write()
 	res.redirect('/')
 });
+app.get("/search", function(req, res) {
+	let q = req.query.q;
+ 	let matchedBook = db.get("products").value().filter(function(product) {
+ 		return product.title.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+ 	});
+	res.render('index',{
+ 		products: matchedBook
+	});
+});
+
+app.get("/view/:id", function(req, res) {
+	let id = req.params.id;
+ 	let product = db.get('products').find({ id: id }).value();
+ 	res.render('view', {
+ 		product: product
+ 	});
+});
+
+app.get("/view/:id/delete",function(req, res) {
+	let id = req.params.id;
+	db.get('products')
+	.remove({ id: id })
+	.write()
+	res.redirect("/");
+});
+
+app.post("/view/:id/update", function(req, res) {
+	let id = req.params.id;
+	let title = req.body.title;
+	db.get('products')
+	.find({ id: id })
+	.assign({ title: title })
+	.write()
+	res.redirect("/")
+ });
+
 
 app.listen(port, function(req, res) {
 	console.log("localhost:" + port)

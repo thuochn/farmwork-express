@@ -1,19 +1,14 @@
 {
   "products": [
     {
-      "id": 1,
-      "title": "javarcript",
-      "description": "sach day js"
+      "description": "sach day lam nguoi",
+      "id": "pQsq5Xo1l",
+      "title": "dac nhan tam"
     },
     {
-      "title": "",
-      "Description": "",
-      "id": "N9td0sr0Y"
-    },
-    {
-      "title": "javarCript",
-      "Description": "sach day js",
-      "id": "QMrY5FNQl"
+      "title": "dac nhan tam",
+      "description": "sach day lam nguoi",
+      "id": "PJpWeTWex"
     }
   ]
 }
