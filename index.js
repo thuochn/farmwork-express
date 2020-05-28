@@ -31,7 +31,9 @@ app.get("/create", function(req, res) {
 
 app.post("/create", function(req, res) {
 	req.body.id = shortid.generate();
-	db.get('products').push(req.body).write()
+	db.get('products')
+	.push(req.body)
+	.write()
 	res.redirect('/')
 });
 app.get("/search", function(req, res) {
@@ -70,6 +72,28 @@ app.post("/view/:id/update", function(req, res) {
 	res.redirect("/")
  });
 
+app.get("/users", function(req, res) {
+	res.render('users/index',{
+		users: db.get('users').value()
+	});
+});
+
+app.get("/users/create", function(req, res) {
+	res.render('users/create',{
+		req.body.id = shortid.generate()
+		db.get("users")
+		.push(req.body)
+		.write()
+	})
+	res.redirect("/users")
+});
+
+app.get("/users/view:id", function(req, res) {
+	let id = req.params.id
+	res.render('users/view',{
+		users: db.get("users").value()
+	})
+});
 
 app.listen(port, function(req, res) {
 	console.log("localhost:" + port)
