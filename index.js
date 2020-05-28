@@ -25,7 +25,7 @@ app.get("/", function(req, res) {
 	});
 });
 
-app.get("/create", function(req, res) {
+app.get("/book/create", function(req, res) {
 	res.render("create")
 });
 
@@ -36,6 +36,7 @@ app.post("/create", function(req, res) {
 	.write()
 	res.redirect('/')
 });
+
 app.get("/search", function(req, res) {
 	let q = req.query.q;
  	let matchedBook = db.get("products").value().filter(function(product) {
@@ -79,13 +80,25 @@ app.get("/users", function(req, res) {
 });
 
 app.get("/users/create", function(req, res) {
-	res.render('users/create',{
-		req.body.id = shortid.generate()
-		db.get("users")
-		.push(req.body)
-		.write()
-	})
-	res.redirect("/users")
+	res.render('users/create')
+});
+
+app.post("/users/create", function(req, res) {
+	req.body.id = shortid.generate();
+	db.get('users')
+	.push(req.body)
+	.write()
+	res.redirect('/users')
+});
+
+app.get("/users/search", function(req, res) {
+	let q = req.query.q;
+ 	let matchedUser = db.get("users").value().filter(function(user) {
+ 		return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+ 	});
+	res.render('users/index',{
+ 		users: matchedUser
+	});
 });
 
 app.get("/users/view:id", function(req, res) {
