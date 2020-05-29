@@ -4,18 +4,13 @@
       "title": "dac nhan tam",
       "description": "sach day lam nguoi",
       "id": "PJpWeTWex",
-      "still": true
+      "still": false
     },
     {
       "title": "java",
       "description": "sach day java",
       "id": "lJOuH2-Nr",
       "still": false
-    },
-    {
-      "title": "javarCriptsss",
-      "description": "sach day javarcript",
-      "id": "m23jJqaaM"
     }
   ],
   "users": [
@@ -36,28 +31,13 @@
       "phonel": "4653",
       "date": "",
       "id": "S7OdM6U6T"
+    },
+    {
+      "name": "truong",
+      "phonel": "0358131928",
+      "date": "4",
+      "id": "45iYwDygE"
     }
   ],
-  "transactions": [
-    {
-      "userId": "truong",
-      "bookId": "dac nhan tam",
-      "id": "DvHrR8JqX"
-    },
-    {
-      "userId": "truong",
-      "bookId": "java",
-      "id": "gpl6WSK_-"
-    },
-    {
-      "userId": "truong",
-      "bookId": "java",
-      "id": "33MLPFTCc"
-    },
-    {
-      "userId": "truong",
-      "bookId": "java",
-      "id": "ipSEZSOmY"
-    }
-  ]
+  "transactions": []
 }

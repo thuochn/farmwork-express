@@ -12,7 +12,9 @@ router.get("/", function(req, res) {
 });
 
 router.get("/create", function(req, res) {
-	res.render("transaction/create")
+	res.render("transaction/create", {
+		transactions: db.get("transactions").value()
+	})
 });
 
 router.post("/create", function(req, res) {
@@ -21,11 +23,25 @@ router.post("/create", function(req, res) {
 	  .push(req.body)
 	  .write();
 	let bookId = req.body.bookId;
+	let date = req.body.date;
 	db.get('products')
   	  .find({ title: bookId })
   	  .assign({ still: false })
   	  .write()
-	res.redirect("/transactions")
+  	db.get('users')
+  	  .find({ title: bookId })
+  	  .assign({ date: date })
+  	  .write()
+	res.redirect("/transactions/create")
+});
+
+router.get("/:id/complete", function(req, res) {
+	let id = req.params.id;
+	let view = db.get("transactions").find({ id: id }).value();
+	db.get('transactions')
+  	  .remove({ id: id })
+      .write()
+     res.redirect("/transactions/create")
 });
 
 module.exports = router;
