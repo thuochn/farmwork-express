@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const pug = require('pug');
 
 const userRouter = require("./router/router.users");
-const bookRouter = require("./router/router.books")
+const bookRouter = require("./router/router.books");
+const transactionRouter =require("./router/router.transactions");
+
 const db = require("./db");
 
 const app = express();
@@ -24,6 +26,7 @@ app.get("/", function(req, res) {
 
 app.use("/books", bookRouter);
 app.use("/users", userRouter);
+app.use("/transactions", transactionRouter);
 
 app.listen(port, function(req, res) {
 	console.log("localhost:" + port)

@@ -29,7 +29,6 @@ router.get("/search", function(req, res) {
 
 router.get("/view/:id", function(req, res) {
 	let id = req.params.id;
-	console.log(id);
  	let product = db.get('products').find({ id: id }).value();
  	res.render('view', {
  		product: product

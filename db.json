@@ -40,5 +40,12 @@
       "date": "",
       "id": "S7OdM6U6T"
     }
+  ],
+  "transactions": [
+    {
+      "id": "1",
+      "userId": "1",
+      "bookId": "2"
+    }
   ]
 }
