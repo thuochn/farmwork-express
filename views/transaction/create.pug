@@ -1,5 +1,5 @@
 h1 Thuê Sách
-form
-	input(type= "text", placeholder= "UserName")
-	input(type= "text", placeholder="UserBook")
+form(action= "/transactions/create", method= "POST")
+	input(type= "text", placeholder= "UserName", name= "userId")
+	input(type= "text", placeholder="UserBook", name="bookId")
 	button Enter
