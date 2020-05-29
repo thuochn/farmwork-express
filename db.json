@@ -15,28 +15,22 @@
   ],
   "users": [
     {
-      "name": "cuong",
-      "phonel": "0888833698",
-      "date": "1",
-      "id": "FN5q5hhhn"
-    },
-    {
       "name": "cuongM",
       "phonel": "0888833699",
       "date": "6",
       "id": "O6z8EJcxq"
     },
     {
-      "name": "anh ",
-      "phonel": "4653",
-      "date": "",
-      "id": "S7OdM6U6T"
-    },
-    {
       "name": "truong",
       "phonel": "0358131928",
       "date": "4",
       "id": "45iYwDygE"
+    },
+    {
+      "name": "Thuc",
+      "phonel": "23215546",
+      "date": "21",
+      "id": "qZ17iHiYy"
     }
   ],
   "transactions": []
