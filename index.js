@@ -18,6 +18,8 @@ app.set('views', './views');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.use(express.static("public"))
+
 app.get("/", function(req, res) {
 	res.render("index", {
 		products: db.get('products').value()

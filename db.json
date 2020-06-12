@@ -1,12 +1,6 @@
 {
   "products": [
     {
-      "title": "",
-      "description": "sach day lam nguoi",
-      "id": "PJpWeTWex",
-      "still": false
-    },
-    {
       "title": "java",
       "description": "sach day java",
       "id": "lJOuH2-Nr",
