@@ -1,13 +1,14 @@
-h1 Thong tin Sach
-a(href="/") Books
-br
-a(href="/transactions/create") Thuê Sách
-form(action= "/books/view/" + product.id + "/delete", method= "GET")
-	button DeleteBook
-form(action= "/books/view/" + product.id + "/update", method= "POST")
-	input(type= "text", placeholder= "update title", name="title")
-	button update	
-li
-	span= product.title
-	br
-	span= "mo ta:" + " " + product.description
+extends ./layouts/common
+
+block content
+	h1 Thong tin Sach
+	a(href="/transactions/create") Thuê Sách
+	form(action= "/books/view/" + product.id + "/delete", method= "GET")
+		button(type="submit", class="btn btn-primary") DeleteBook
+	form(action= "/books/view/" + product.id + "/update", method= "POST")
+		input(type= "text", class="form-control", placeholder= "update title", name="title")
+		button(type="submit", class="btn btn-primary") update	
+	li
+		span= product.title
+		br
+		span= "mo ta:" + " " + product.description

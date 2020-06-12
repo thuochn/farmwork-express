@@ -1,5 +1,8 @@
-h1 Books and friends
-p Sách giống như những người bạn.<br/>Hãy chọn cho mình những người bạn phù hợp!
-each product in products
-	li= product.title
-	a(href="/books/view/" + product.id) xem chi tiet
+extends ../layouts/common
+
+block content
+	h1 Books and friends
+	p Sách giống như những người bạn.<br/>Hãy chọn cho mình những người bạn phù hợp!
+	each product in products
+		li= product.title
+		a(href="/books/view/" + product.id) xem chi tiet

@@ -1,12 +1,11 @@
-h1 List Users
-a(href="/") Books
-br
-a(href="/users") Users
-br
-a(href="users/create") Create Users
-form(action="/users/search", method= "GET")
-	input(type= "text", name= "q")
-	button search
-each user in users
-	li= user.name
-	a(href="/users/view/" + user.id) xem chi tiet
+extends ../layouts/common
+
+block content
+	h1 List Users
+	a(href="users/create") Create Users
+	form(action="/users/search", method= "GET")
+		input(type= "text", class="form-control", name= "q")
+		button(type="submit", class="btn btn-primary") search
+	each user in users
+		li= user.name
+		a(href="/users/view/" + user.id) xem chi tiet

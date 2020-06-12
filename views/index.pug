@@ -1,11 +1,12 @@
-h1 Books
-h4
-	a(href="books/create") CreateBook
-	br
-	a(href="/users") UserBooks
-form(action= "/books/search", method= "GET")
-	input(type= "text", placeholder= "Search Books", name= "q")
-	button search
-each product in products
-	li= product.title
-	a(href="/books/view/" + product.id) xem chi tiet
+extends ./layouts/common
+
+block content
+	h1 Books
+	h4
+		a(href="books/create") CreateBook
+	form(action= "/books/search", method= "GET")
+		input(type= "text", class="form-control", placeholder= "Search Books", name= "q")
+		button(type="submit", class="btn btn-primary") search
+	each product in products
+		li= product.title
+		a(href="/books/view/" + product.id) xem chi tiet

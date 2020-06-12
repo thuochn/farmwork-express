@@ -1,15 +1,17 @@
-h1 User
-a(href="/users") users
-form(action= "/users/view/" + user.id + "/update", method= "POST")
-	input(type= "text", placeholder= "EditName", name="name")
-	input(type= "text", placeholder= "EditPhonel", name="phonel")
-	input(type= "text", placeholder= "EditDate", name="date")
-	button update
-form(action= "/users/view/" + user.id + "/delete")
-	button DELETE USER
-li
-	span= "name:" + user.name
-	br
-	span= "phonel:" + user.phonel
-	br
-	span="date:" + user.date + "ngay"
+extends ../layouts/common
+
+block content
+	h1 User
+	form(action= "/users/view/" + user.id + "/update", method= "POST")
+		input(type= "text", class="form-control", placeholder= "EditName", name="name")
+		input(type= "text", class="form-control", placeholder= "EditPhonel", name="phonel")
+		input(type= "text", class="form-control", placeholder= "EditDate", name="date")
+		button(type="submit", class="btn btn-primary") update
+	form(action= "/users/view/" + user.id + "/delete")
+		button(type="submit", class="btn btn-primary") DELETE USER
+	li
+		span= "name:" + user.name
+		br
+		span= "phonel:" + user.phonel
+		br
+		span="date:" + user.date + "ngay"

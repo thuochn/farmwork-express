@@ -1,8 +1,11 @@
-h1 Create Book
-a(href="/") Books
-form(action="/books/create", method="POST")
-	input(type= "text", placeholder="BookName", name="title")
-	br
-	input(type= "text", placeholder="BookDescription", name="description")
-	br
-	button create
+extends ./layouts/common
+
+block content
+	h1 Create Book
+	a(href="/") Books
+	form(action="/books/create", method="POST")
+		input(type= "text", class="form-control", placeholder="BookName", name="title")
+		br
+		input(type= "text", class="form-control", placeholder="BookDescription", name="description")
+		br
+		button(type="submit", class="btn btn-primary") create

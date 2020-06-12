@@ -1,6 +1,9 @@
-h1 Create
-form(action="/users/create", method= "POST")
-	input(type= "text", placeholder= "UserName", name="name")
-	input(type= "text", placeholder= "UserPhonel", name="phonel")
-	input(type= "text", placeholder= "UserDate", name="date")
-	button create
+extends ../layouts/common
+
+block content
+	h1 Create
+	form(action="/users/create", method= "POST")
+		input(type= "text", class="form-control", placeholder= "UserName", name="name")
+		input(type= "text", class="form-control mt-2", placeholder= "UserPhonel", name="phonel")
+		input(type= "text", class="form-control mt-2", placeholder= "UserDate", name="date")
+		button(type="submit", class="btn btn-primary mt-2") create
