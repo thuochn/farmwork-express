@@ -16,7 +16,7 @@ module.exports.postCreate =  function(req, res) {
 	req.body.id = shortid.generate();
 
 	let errors = [];
-	
+
 	if(!req.body.name) {
 		errors.push("name is require")
 	}
@@ -30,6 +30,11 @@ module.exports.postCreate =  function(req, res) {
 			errors: errors,
 			values: req.body
 		});
+		return;
+	}
+
+	if(req.body.name.length > 30) {
+		res.render('users/create');
 		return;
 	}
 
