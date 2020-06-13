@@ -16,6 +16,25 @@ module.exports.create = function(req, res) {
 
 module.exports.postCreate = function(req, res) {
 	req.body.id = shortid.generate();
+	let errors = [];
+
+	if(!req.body.userId) {
+		errors.push("userId is require")
+	}
+
+	if(!req.body.bookId) {
+		errors.push("bookId is require")
+	}
+
+	if(errors.length) {
+		res.render("transaction/create", {
+			transactions: db.get("transactions").value(),
+			errors: errors,
+			values: req.body
+		});
+		return;
+	}
+
 	db.get('transactions')
 	  .push(req.body)
 	  .write();

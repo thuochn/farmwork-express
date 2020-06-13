@@ -2,8 +2,13 @@ extends ../layouts/common
 
 block content
 	h1 Create
+
+	if errors
+		each error in errors
+			.alert.alert-secondary= error
+
 	form(action="/users/create", method= "POST")
-		input(type= "text", class="form-control", placeholder= "UserName", name="name")
-		input(type= "text", class="form-control mt-2", placeholder= "UserPhonel", name="phonel")
+		input(type= "text", class="form-control", placeholder= "UserName", name="name", value = values ? values.name : "")
+		input(type= "text", class="form-control mt-2", placeholder= "UserPhonel", name="phonel", value = values ? values.phonel : "")
 		input(type= "text", class="form-control mt-2", placeholder= "UserDate", name="date")
 		button(type="submit", class="btn btn-primary mt-2") create

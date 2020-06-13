@@ -2,17 +2,26 @@ extends ../layouts/common
 
 block content
 	h1 Thuê Sách
+
+	if errors
+		each error in errors
+			.alert.alert-dark= error
+
 	form(action= "/transactions/create", method= "POST")
-		input(type= "text", placeholder= "UserName", name= "userId")
-		input(type= "text", placeholder="UserBook", name="bookId")
-		input(type= "text", placeholder="Date", name="date")
-		button Enter
-	each transaction in transactions	
-		li
-			span= "Ten:" + transaction.userId
-			br
-			span= "Ten Sach:" + transaction.bookId
-			br
-			span= "So Ngay thue:" + transaction.date + "ngay"
-		form(action= "/transactions/" + transaction.id + "/complete", metho= "GET")
-			button Tra sach
+		input(type= "text", class="form-control mt-2", placeholder= "UserName", name= "userId")
+		input(type= "text", class="form-control mt-2", placeholder="UserBook", name="bookId")
+		input(type= "text", class="form-control mt-2", placeholder="Date", name="date")
+		button(type="submit", class="btn btn-primary mt-2") Enter
+	table.table
+		tr
+			th Name
+			th Book
+			th Date	
+		each transaction in transactions
+			tr
+				td= transaction.userId
+				td= transaction.bookId
+				td= transaction.date
+				td
+					form(action= "/transactions/" + transaction.id + "/complete", metho= "GET")
+						button(type="submit", class="btn btn-primary") Tra sach

@@ -5,7 +5,13 @@ block content
 	a(href="users/create") Create Users
 	form(action="/users/search", method= "GET")
 		input(type= "text", class="form-control", name= "q")
-		button(type="submit", class="btn btn-primary") search
-	each user in users
-		li= user.name
-		a(href="/users/view/" + user.id) xem chi tiet
+		button(type="submit", class="btn btn-primary mt-2") search
+	table.table
+		tr
+			th Name
+			th
+		each user in users
+			tr
+				td= user.name
+				td
+					a(href="/users/view/" + user.id) xem chi tiet

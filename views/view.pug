@@ -7,8 +7,11 @@ block content
 		button(type="submit", class="btn btn-primary") DeleteBook
 	form(action= "/books/view/" + product.id + "/update", method= "POST")
 		input(type= "text", class="form-control", placeholder= "update title", name="title")
-		button(type="submit", class="btn btn-primary") update	
-	li
-		span= product.title
-		br
-		span= "mo ta:" + " " + product.description
+		button(type="submit", class="btn btn-primary") update
+	table.table
+		tr
+			th Book
+			th MoTa
+			tr
+				td=product.title
+				td=product.description

@@ -8,6 +8,24 @@ module.exports.create = function(req, res) {
 
 module.exports.postCreate =  function(req, res) {
 	req.body.id = shortid.generate();
+	let errors = [];
+
+	if(!req.body.title){
+		errors.push("title is require")
+	}
+
+	if(!req.body.description){
+		errors.push("description is require")
+	}
+
+	if(errors.length){
+		res.render("create", {
+			errors: errors,
+			values: req.body
+		});
+			return;
+}
+
 	db.get('products')
 	.push(req.body)
 	.write()
