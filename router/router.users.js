@@ -1,14 +1,15 @@
 const express = require('express');
 
-const router = express.Router();
-
 const controller = require("../controller/controller.users");
+const validate = require("../validate/user.validate");
+
+const router = express.Router();
 
 router.get("/", controller.index);
 
 router.get("/create", controller.create);
 
-router.post("/create",controller.postCreate);
+router.post("/create", validate.postCreate, controller.postCreate);
 
 router.get("/search", controller.search);
 
